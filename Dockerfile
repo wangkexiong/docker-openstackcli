@@ -20,9 +20,9 @@ COPY ansible.hosts /etc/ansible/hosts
 # Use pip==8.1.1 for backwards.
 #
 RUN apk add --no-cache python-dev py-pip ca-certificates gcc musl-dev linux-headers \
-                       openssh-client ansible && \
+                       openssh-client libffi-dev openssl-dev ansible curl && \
     pip install pip==8.1.1 && \
-    pip install --upgrade --no-cache-dir shade==1.6.2 && \
+    pip install --upgrade --no-cache-dir shade==1.9.0 && \
     ssh-keygen -f ~/.ssh/id_rsa -t rsa -N '' && \
     apk del gcc musl-dev linux-headers
 
